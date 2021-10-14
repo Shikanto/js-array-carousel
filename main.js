@@ -24,13 +24,110 @@ const text = [
 
 const mainImg = document.querySelector(".main-img");
 const textImg = document.querySelector(".img-text");
-const sidebarContainer = document.querySelector(".sidebar-container");
+const sidebarContainer = document.querySelectorAll(".sidebar-container-img");
+const sidebar = document.querySelector(".sidebar");
 
-let currentIndex = 0;
 
-for (let i = 0; i < items.lenght; i++) {
-    
-    const imgTaken = items[i];
+let currentIndex = 1;
+let indexSidebarContainer = 0;
 
-    let imgSidebar = `<div class="sidebar-img bg-01 cover-background-img></div>`
+
+for (let i = 0; i < items.length; i++) {
+
+    const urlImgTaken = items[i];
+
+    let classActive = "";
+
+    if (i === currentIndex) {
+        classActive = "border-active"; 
+    }
+
+        let tagImg = `<img class="sidebar-img ${classActive}" src="${urlImgTaken}" alt="">
+                    <div class="overlay"></div>`;
+        sidebarContainer[indexSidebarContainer].innerHTML += tagImg;
+        
+        let mainHeroImg = `<img class="sidebar-img ${classActive}" src="${urlImgTaken}" alt="">`;
+        let titleImg = `<h3 class="titolo"> ${title[i]}</h3>`;
+        let descrpitionImg = `<span class="descrizione-img"> ${text[i]}</span>`;
+
+        if (classActive === "border-active") {
+            
+            textImg.innerHTML += titleImg;
+            textImg.innerHTML += descrpitionImg;
+            mainImg.innerHTML += mainHeroImg;
+        
+        }
+
+    indexSidebarContainer++;
+   
 }
+
+const mainActiveImg = mainImg.querySelector(".border-active");
+mainActiveImg.classList.remove("border-active");
+const titleMainImg = document.querySelector(".titolo");
+const descriptionMainImg = document.querySelector(".descrizione-img");
+
+
+
+
+
+
+
+
+
+const arrowUp = document.querySelector(".arrow-up");
+const arrowDown = document.querySelector(".arrow-down");
+
+
+arrowUp.addEventListener("click", function () {
+    const activeImg = sidebar.querySelector(".border-active");
+    activeImg.classList.remove("border-active");
+
+    currentIndex--;
+    
+    if (currentIndex < 0) {
+        currentIndex = items.length -1;
+    }
+
+    const imgTags = sidebar.querySelectorAll("img");
+    const newActiveImg = imgTags[currentIndex];
+    newActiveImg.classList.add("border-active");
+    
+    let srcwMainImg = items[currentIndex]; 
+    mainActiveImg.src = srcwMainImg;
+    let newMainTitleImg = `<h3>${title[currentIndex]}</h3>`;
+    titleMainImg.innerHTML = newMainTitleImg;
+    let newDescriptionMainImg = `<span>${text[currentIndex]}</span>`;
+    descriptionMainImg.innerHTML = newDescriptionMainImg;
+    
+    
+    
+    
+});
+
+arrowDown.addEventListener("click", function () {
+    const activeImg = sidebar.querySelector(".border-active");
+    activeImg.classList.remove("border-active");
+
+    currentIndex++;
+    
+    if (currentIndex > items.length -1) {
+        currentIndex = 0;
+    }
+
+    const imgTags = sidebar.querySelectorAll("img");
+    const newActiveImg = imgTags[currentIndex];
+    newActiveImg.classList.add("border-active");
+    
+    let srcwMainImg = items[currentIndex]; 
+    mainActiveImg.src = srcwMainImg;
+    let newMainTitleImg = `<h3>${title[currentIndex]}</h3>`;
+    titleMainImg.innerHTML = newMainTitleImg;
+    let newDescriptionMainImg = `<span>${text[currentIndex]}</span>`;
+    descriptionMainImg.innerHTML = newDescriptionMainImg;
+    
+    
+    
+    
+});
+

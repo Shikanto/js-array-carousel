@@ -1,12 +1,29 @@
 .shell{
     display: flex;
-    height: 400px;
+    height: 500px;
 }
 
 .main-img{
     width: 85%;
     position: relative;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+#titolo{
+    font-weight: bold;
+
+}
+
+h3, .main-img .img-text span{
+    z-index: 99;
+    position: relative;
+    font-size: 2rem;
+}
+
+.main-img .img-text span{
+    font-size: 1.5rem;
+}
+
 
 .sidebar {
     display: flex;
@@ -49,6 +66,7 @@
 
 .border-active{
     border: 3px solid red;
+    z-index: 90;
 }
 
 .arrow{
@@ -62,14 +80,15 @@
     align-items: center;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 92;
 }
 .arrow-up{
-    top: 20px;
-    z-index: 92;
+    top: 10px;
+    
 }
 
 .arrow-down{
-    bottom: 20px;
+    bottom: 10px;
 }
 
 /* opacity-50 */
