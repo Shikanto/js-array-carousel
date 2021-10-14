@@ -1,53 +1,35 @@
 .shell{
     display: flex;
-    height: 500px;
+    height: 400px;
 }
 
 .main-img{
-    display: flex;
-    width: 80%;
+    width: 85%;
     position: relative;
 }
 
-.sidebar-container{
+.sidebar {
     display: flex;
-    width: 20%;
+    width: 15%;
     flex-direction: column;
     position: relative;
 }
 
 
-
-.sidebar-img{
+.sidebar-container-img{
     width: 100%;
     height: calc(100% / 5);
     position: relative;
 }
 
-.cover-background-img{
-    background-position: center;
-    background-size: cover;
-}
-
-.bg-01{
-    background-image: url("img/01.jpg");
-}
-
-.bg-02{
-    background-image: url("img/02.jpg");
-}
-
-.bg-03{
-    background-image: url("img/03.jpg");
-}
-
-.bg-04{
-    background-image: url("img/04.jpg");
-}
-
-.bg-05{
-    background-image: url("img/05.jpg");
-}
+.sidebar-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 .img-text{
     position: absolute;
