@@ -31,6 +31,7 @@ const sidebar = document.querySelector(".sidebar");
 let currentIndex = 1;
 let indexSidebarContainer = 0;
 
+/* PRENDO LE IMMAGINI E LE METTO NELL'HTML */
 
 for (let i = 0; i < items.length; i++) {
 
@@ -68,66 +69,88 @@ const titleMainImg = document.querySelector(".titolo");
 const descriptionMainImg = document.querySelector(".descrizione-img");
 
 
-
-
-
-
-
-
+/* FRECCE CLICK */
 
 const arrowUp = document.querySelector(".arrow-up");
 const arrowDown = document.querySelector(".arrow-down");
 
+/* FRECCIA SU */
 
 arrowUp.addEventListener("click", function () {
+
+/* L'IMG ATTUALMENTE ATTIVA PER LA SUA CONDIZIONE DI "ATTIVA" */    
+
     const activeImg = sidebar.querySelector(".border-active");
     activeImg.classList.remove("border-active");
 
     currentIndex--;
+
+/* CONDIZIONE PER FAR RICOMINCIARE IL CICLO DELLE IMMAGINI */   
     
     if (currentIndex < 0) {
         currentIndex = items.length -1;
     }
 
+/* CAMBIO IMG ATTIVA SULLA SIDEBAR */
+
     const imgTags = sidebar.querySelectorAll("img");
     const newActiveImg = imgTags[currentIndex];
     newActiveImg.classList.add("border-active");
     
+/* CAMBIO IMG GRANDE ATTIVA */
+
     let srcwMainImg = items[currentIndex]; 
     mainActiveImg.src = srcwMainImg;
+    
+/* AGGIUNGO IL TITOLO ALL'IMG GRANDE */
+
     let newMainTitleImg = `<h3>${title[currentIndex]}</h3>`;
     titleMainImg.innerHTML = newMainTitleImg;
+    
+/* AGGIUNGO LA DESCRIZIONE ALL'IMG GRANDE */ 
+
     let newDescriptionMainImg = `<span>${text[currentIndex]}</span>`;
-    descriptionMainImg.innerHTML = newDescriptionMainImg;
-    
-    
-    
+    descriptionMainImg.innerHTML = newDescriptionMainImg;   
     
 });
 
+/* FRECCIA GIU */
+
 arrowDown.addEventListener("click", function () {
+
+/* L'IMG ATTUALMENTE ATTIVA PER LA SUA CONDIZIONE DI "ATTIVA" */    
+
     const activeImg = sidebar.querySelector(".border-active");
     activeImg.classList.remove("border-active");
 
     currentIndex++;
+
+/* CONDIZIONE PER FAR RICOMINCIARE IL CICLO DELLE IMMAGINI */
     
     if (currentIndex > items.length -1) {
         currentIndex = 0;
     }
 
+/* CAMBIO IMG ATTIVA SULLA SIDEBAR */
+
     const imgTags = sidebar.querySelectorAll("img");
     const newActiveImg = imgTags[currentIndex];
     newActiveImg.classList.add("border-active");
-    
+  
+/* CAMBIO IMG GRANDE ATTIVA */   
+
     let srcwMainImg = items[currentIndex]; 
     mainActiveImg.src = srcwMainImg;
+
+/* AGGIUNGO IL TITOLO ALL'IMG GRANDE */    
+
     let newMainTitleImg = `<h3>${title[currentIndex]}</h3>`;
     titleMainImg.innerHTML = newMainTitleImg;
+ 
+/* AGGIUNGO LA DESCRIZIONE ALL'IMG GRANDE */      
+
     let newDescriptionMainImg = `<span>${text[currentIndex]}</span>`;
     descriptionMainImg.innerHTML = newDescriptionMainImg;
-    
-    
-    
     
 });
 
